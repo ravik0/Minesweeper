@@ -101,7 +101,7 @@ public class MSButton {
     textColor = tc;
   }
   private void setClicked(boolean joy) {
-    clicked = joy; //attempting to use to fix github crash
+    clicked = joy; //attempting to use to fix github crash. doesnt work but i like how it looks so keeping it
   }
     
   // called by manager
@@ -115,10 +115,10 @@ public class MSButton {
       }
     }
     if (bombs.contains(this)) {
-      displayLosingMessage();
       for (int i = 0; i < bombs.size(); i++) {
         bombs.get(i).setClicked(true);
       }
+      displayLosingMessage();
     } 
     else if (countBombs(r, c) > 0) {
       setLabel(str(countBombs(r, c)));
