@@ -100,6 +100,10 @@ public class MSButton {
   public void setColor(color tc) {
     textColor = tc;
   }
+  private void setClicked(boolean joy) {
+    clicked = joy; //attempting to use to fix github crash
+  }
+    
   // called by manager
 
   public void mousePressed () {
@@ -113,9 +117,7 @@ public class MSButton {
     if (bombs.contains(this)) {
       displayLosingMessage();
       for (int i = 0; i < bombs.size(); i++) {
-        if (!bombs.get(i).isClicked()) {
-          bombs.get(i).mousePressed();
-        }
+        bombs.get(i).setClicked(true);
       }
     } 
     else if (countBombs(r, c) > 0) {
