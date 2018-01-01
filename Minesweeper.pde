@@ -114,7 +114,7 @@ public class MSButton {
         clicked = false;
       }
     }
-    if (bombs.contains(this)) {
+    else if (bombs.contains(this)) {
       for (int i = 0; i < bombs.size(); i++) {
         bombs.get(i).setClicked(true);
       }
