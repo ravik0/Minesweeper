@@ -3,7 +3,7 @@ public final static int NUM_ROWS = 20;
 public final static int NUM_COLS = 20;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
-void setup () {
+public void setup () {
   size(400, 400);
   textAlign(CENTER, CENTER);
   // make the manager
@@ -56,7 +56,7 @@ public void displayLosingMessage() {
   buttons[9][12].setLabel("S");
   buttons[9][13].setLabel("E");
   for (int i = 6; i < 14; i++) {
-    buttons[9][i].setColor(#64F774);
+    buttons[9][i].setColor(255);
   }
 }
 public void displayWinningMessage() {
@@ -70,7 +70,7 @@ public void displayWinningMessage() {
   buttons[9][12].setLabel("N");
   buttons[9][13].setLabel("!");
   for (int i = 6; i < 14; i++) {
-    buttons[9][i].setColor(#64F774);
+    buttons[9][i].setColor(255);
   }
 }
 
@@ -79,7 +79,7 @@ public class MSButton {
   private float x, y, width, height;
   private boolean clicked, marked;
   private String label;
-  private color textColor = 0;
+  private color textColor;
   public MSButton ( int rr, int cc ) {
     width = 400/NUM_COLS;
     height = 400/NUM_ROWS;
@@ -89,6 +89,7 @@ public class MSButton {
     y = r*height;
     label = "";
     marked = clicked = false;
+    textColor = 0;
     Interactive.add( this ); // register it with the manager
   }
   public boolean isMarked() {
@@ -142,7 +143,7 @@ public class MSButton {
     else if (clicked)
       fill( 200 );
     else 
-    fill(100);
+      fill(100);
     rect(x, y, width, height);
     fill(textColor);
     text(label, x+width/2, y+height/2);
