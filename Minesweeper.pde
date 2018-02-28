@@ -112,16 +112,10 @@ public class MSButton {
   }
     
   // called by manager
-
   public void mousePressed () {
     clicked = true;
-    if (keyPressed == true) {
-      marked = !marked;
-      if (!marked) {
-        clicked = false;
-      }
-    }
-    else if (bombs.contains(this)) {
+    marked = false;
+    if (bombs.contains(this)) {
       for (int i = 0; i < bombs.size(); i++) {
         bombs.get(i).setClicked(true);
       }
@@ -157,6 +151,12 @@ public class MSButton {
     rect(x, y, width, height);
     fill(textColor);
     text(label, x+width/2, y+height/2);
+    if (!isClicked() && keyPressed && mouseX > x && mouseX < x + 20 && mouseY > y && mouseY < y+20) {
+      marked = !marked;
+      if (!marked) {
+        clicked = false;
+      }
+    }
   }
   public void setLabel(String newLabel) {
     label = newLabel;
